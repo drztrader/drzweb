@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DRZ Web</title>
+
+<meta name="description"
+content="DRZ Official Website">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ========================= */
+/* Reset */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    cursor:none;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:black;
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* ========================= */
+/* Loader */
+/* ========================= */
+
+.loader{
+
+    position:fixed;
+    inset:0;
+
+    background:black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    z-index:999999;
+
+    transition:1s;
+}
+
+.loader h1{
+
+    font-size:65px;
+
+    letter-spacing:8px;
+
+    animation:
+    glowText 2s infinite;
+}
+
+.loader p{
+
+    margin-top:15px;
+
+    color:#888;
+}
+
+@keyframes glowText{
+
+    0%{
+        opacity:0.5;
+        text-shadow:none;
+    }
+
+    50%{
+        opacity:1;
+        text-shadow:
+        0 0 20px white;
+    }
+
+    100%{
+        opacity:0.5;
+        text-shadow:none;
+    }
+}
+
+/* ========================= */
+/* Cursor */
+/* ========================= */
+
+.cursor{
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    position:fixed;
+
+    background:white;
+
+    pointer-events:none;
+
+    z-index:999999;
+
+    mix-blend-mode:difference;
+
+    transform:
+    translate(-50%,-50%);
+
+    box-shadow:
+    0 0 20px white,
+    0 0 50px white;
+}
+
+/* ========================= */
+/* Background */
+/* ========================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.82),
+        rgba(0,0,0,0.94)
+    ),
+    url("drz.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    filter:
+    blur(5px)
+    brightness(0.35);
+
+    transform:scale(1.1);
+
+    z-index:-5;
+}
+
+/* ========================= */
+/* Stars */
+/* ========================= */
+
+.stars{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-4;
+}
+
+.star{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    background:white;
+
+    border-radius:50%;
+
+    opacity:0.7;
+
+    animation:
+    moveStar linear infinite,
+    glow 3s ease-in-out infinite;
+}
+
+@keyframes moveStar{
+
+    from{
+        transform:translateY(0px);
+    }
+
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+@keyframes glow{
+
+    0%{
+        opacity:0.2;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0.2;
+    }
+}
+
+/* ========================= */
+/* Container */
+/* ========================= */
+
+.container{
+
+    width:100%;
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:50px 20px;
+}
+
+/* ========================= */
+/* Hero */
+/* ========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-card{
+
+    width:100%;
+    max-width:700px;
+
+    backdrop-filter:blur(18px);
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(15,15,15,0.72),
+        rgba(0,0,0,0.92)
+    );
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius:35px;
+
+    padding:45px;
+
+    animation:
+    floatCard 6s ease-in-out infinite;
+
+    box-shadow:
+    0 0 40px rgba(255,255,255,0.05),
+    0 0 120px rgba(0,0,0,0.9);
+}
+
+@keyframes floatCard{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.top{
+
+    display:flex;
+    gap:22px;
+    align-items:flex-start;
+    margin-bottom:45px;
+}
+
+.logo{
+
+    width:110px;
+    height:110px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:
+    3px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+    0 0 30px rgba(255,255,255,0.15);
+
+    transition:0.4s;
+}
+
+.logo:hover{
+
+    transform:
+    scale(1.05)
+    rotate(2deg);
+}
+
+h1{
+
+    font-size:60px;
+
+    letter-spacing:5px;
+
+    margin-bottom:10px;
+}
+
+.description{
+
+    color:#cfcfcf;
+
+    line-height:1.9;
+
+    max-width:420px;
+}
+
+/* ========================= */
+/* Buttons */
+/* ========================= */
+
+.buttons{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:20px;
+}
+
+.btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:22px;
+
+    border-radius:24px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+
+    font-size:20px;
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(35,35,35,0.95),
+        rgba(0,0,0,1)
+    );
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    transition:0.35s;
+
+    box-shadow:
+    0 0 18px rgba(255,255,255,0.05),
+    inset 0 0 12px rgba(255,255,255,0.04);
+
+    animation:
+    floatingButtons 5s ease-in-out infinite;
+}
+
+@keyframes floatingButtons{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-130%;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.16),
+        transparent
+    );
+
+    transition:0.8s;
+}
+
+.btn:hover{
+
+    transform:
+    translateY(-6px)
+    scale(1.03);
+
+    box-shadow:
+    0 0 30px rgba(255,255,255,0.15);
+}
+
+.btn:hover::before{
+    left:130%;
+}
+
+/* ========================= */
+/* Sections */
+/* ========================= */
+
+.section{
+
+    margin-top:120px;
+
+    animation:
+    fadeUp 1.2s ease;
+}
+
+.section h2{
+
+    font-size:42px;
+
+    margin-bottom:25px;
+
+    text-align:center;
+}
+
+.section p{
+
+    color:#cfcfcf;
+
+    line-height:1.9;
+
+    text-align:center;
+
+    max-width:750px;
+
+    margin:auto;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ========================= */
+/* Skills */
+/* ========================= */
+
+.skills{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:35px;
+}
+
+.skill{
+
+    padding:15px 22px;
+
+    border-radius:18px;
+
+    background:
+    rgba(255,255,255,0.06);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(10px);
+
+    transition:0.3s;
+}
+
+.skill:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,0.10);
+}
+
+/* ========================= */
+/* Projects */
+/* ========================= */
+
+.projects{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:22px;
+
+    margin-top:35px;
+}
+
+.project{
+
+    padding:28px;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(12px);
+
+    transition:0.35s;
+}
+
+.project:hover{
+
+    transform:
+    translateY(-8px);
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,0.10);
+}
+
+.project h3{
+
+    margin-bottom:15px;
+}
+
+/* ========================= */
+/* Footer */
+/* ========================= */
+
+.footer{
+
+    margin-top:120px;
+
+    text-align:center;
+
+    color:#777;
+
+    padding-bottom:40px;
+}
+
+/* ========================= */
+/* Mobile */
+/* ========================= */
+
+@media(max-width:700px){
+
+    *{
+        cursor:auto;
+    }
+
+    .cursor{
+        display:none;
+    }
+
+    .top{
+
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .buttons{
+
+        grid-template-columns:1fr;
+    }
+
+    h1{
+        font-size:42px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Loader -->
+
+<div class="loader" id="loader">
+
+<h1>DRZ</h1>
+<p>Initializing System...</p>
+
+</div>
+
+<!-- Cursor -->
+
+<div class="cursor" id="cursor"></div>
+
+<!-- Stars -->
+
+<div class="stars">
+
+<span class="star" style="left:10%; top:90%; animation-duration:11s;"></span>
+<span class="star" style="left:20%; top:100%; animation-duration:15s;"></span>
+<span class="star" style="left:35%; top:95%; animation-duration:12s;"></span>
+<span class="star" style="left:50%; top:110%; animation-duration:18s;"></span>
+<span class="star" style="left:65%; top:92%; animation-duration:14s;"></span>
+<span class="star" style="left:80%; top:105%; animation-duration:16s;"></span>
+<span class="star" style="left:90%; top:98%; animation-duration:13s;"></span>
+
+</div>
+
+<div class="container">
+
+<!-- Hero -->
+
+<section class="hero">
+
+<div class="hero-card">
+
+<div class="top">
+
+<img src="drz.jpg" class="logo">
+
+<div>
+
+<h1>DRZ</h1>
+
+<div class="description">
+
+Cybersecurity Student • Web Developer • Graphic Designer • TON & NFT Trader
+
+</div>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn"
+href="https://t.me/drztrader"
+target="_blank">
+
+<i class="fa-brands fa-telegram"></i>
+Telegram
+
+</a>
+
+<a class="btn"
+href="https://x.com/drztrader"
+target="_blank">
+
+<i class="fa-brands fa-x-twitter"></i>
+X
+
+</a>
+
+<a class="btn"
+href="https://discord.com/users/1439626746294178014"
+target="_blank">
+
+<i class="fa-brands fa-discord"></i>
+Discord
+
+</a>
+
+<a class="btn"
+href="https://t.me/CustomerTrustReviews"
+target="_blank">
+
+<i class="fa-solid fa-shield-heart"></i>
+Trust
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- About -->
+
+<section class="section">
+
+<h2>About Me</h2>
+
+<p>
+
+Passionate about cybersecurity, design, web development and digital trading.
+Focused on building futuristic digital experiences and growing in the tech world.
+
+</p>
+
+</section>
+
+<!-- Skills -->
+
+<section class="section">
+
+<h2>Skills</h2>
+
+<div class="skills">
+
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Cybersecurity</div>
+<div class="skill">Graphic Design</div>
+<div class="skill">Web Development</div>
+<div class="skill">NFT Trading</div>
+<div class="skill">TON Ecosystem</div>
+
+</div>
+
+</section>
+
+<!-- Projects -->
+
+<section class="section">
+
+<h2>Projects</h2>
+
+<div class="projects">
+
+<div class="project">
+
+<h3>DRZ Web</h3>
+
+<p>
+
+Personal futuristic portfolio website with animated UI and interactive effects.
+
+</p>
+
+</div>
+
+<div class="project">
+
+<h3>TON Trading</h3>
+
+<p>
+
+Trading and NFT ecosystem experience inside TON blockchain communities.
+
+</p>
+
+</div>
+
+<div class="project">
+
+<h3>Graphic Design</h3>
+
+<p>
+
+Designing digital visuals, branding concepts and futuristic artwork.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Contact -->
+
+<section class="section">
+
+<h2>Contact</h2>
+
+<p>
+
+Telegram:
+@drztrader
+
+<br><br>
+
+Discord:
+drztrader
+
+</p>
+
+</section>
+
+<!-- Footer -->
+
+<div class="footer">
+
+drzweb © 2026
+
+</div>
+
+</div>
+
+<!-- Sound -->
+
+<audio id="hoverSound">
+
+<source
+src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3"
+type="audio/mpeg">
+
+</audio>
+
+<!-- JavaScript -->
+
+<script>
+
+/* Loader */
+
+window.onload = () => {
+
+setTimeout(() => {
+
+document.getElementById("loader").style.opacity = "0";
+
+setTimeout(() => {
+
+document.getElementById("loader").style.display = "none";
+
+},1000);
+
+},2000);
+
+};
+
+/* Cursor */
+
+const cursor =
+document.getElementById("cursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left = e.clientX + "px";
+
+cursor.style.top = e.clientY + "px";
+
+});
+
+/* Hover Sound */
+
+const hoverSound =
+document.getElementById("hoverSound");
+
+document.querySelectorAll(".btn").forEach(btn=>{
+
+btn.addEventListener("mouseenter",()=>{
+
+hoverSound.currentTime = 0;
+
+hoverSound.play();
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
+```
