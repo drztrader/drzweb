@@ -725,6 +725,14 @@ Trust
 
 </a>
 
+<a class="btn"
+href="mailto:drzbusinesss@gmail.com">
+
+<i class="fa-solid fa-envelope"></i>
+Email
+
+</a>
+
 </div>
 
 </div>
@@ -885,8 +893,21 @@ document.getElementById("cursor");
 document.addEventListener("mousemove",(e)=>{
 
 cursor.style.left = e.clientX + "px";
-
 cursor.style.top = e.clientY + "px";
+
+cursor.style.opacity = "1";
+
+});
+
+document.addEventListener("mouseleave",()=>{
+
+cursor.style.opacity = "0";
+
+});
+
+document.addEventListener("mouseenter",()=>{
+
+cursor.style.opacity = "1";
 
 });
 
