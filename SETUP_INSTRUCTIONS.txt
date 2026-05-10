@@ -1,0 +1,57 @@
+/* ========================= */
+/* Favicon Setup */
+/* ========================= */
+
+/* 
+  Follow these steps to complete the setup:
+
+  1. MOVE IMAGE FILES:
+     - Move your "drz.jpg" to: /assets/drz.jpg
+     - Move or create "logo.png" to: /assets/logo.png
+
+  2. AUDIO FILE:
+     - Download or create an audio file for hover sound
+     - Save it as: /assets/hover-sound.mp3
+     
+     Recommended: Use a royalty-free sound from:
+     - https://pixabay.com/sound-effects/
+     - https://freesound.org/
+     
+     Alternative: Use this command to download:
+     wget https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3 -O assets/hover-sound.mp3
+
+  3. VERIFY FILE STRUCTURE:
+     Your /home/drz/drzweb/ should look like:
+     
+     drzweb/
+     ├── index.html
+     ├── robots.txt
+     ├── sitemap.xml
+     ├── .htaccess (optional)
+     ├── css/
+     │   └── style.css
+     ├── js/
+     │   └── script.js
+     └── assets/
+         ├── drz.jpg
+         ├── logo.png
+         └── hover-sound.mp3
+
+  4. UPDATE URLS:
+     - Change "https://drz-web.example.com" in:
+       - index.html (meta tags)
+       - sitemap.xml
+       To your actual domain/URL
+
+  5. TEST THE WEBSITE:
+     - Open index.html in a browser
+     - Check that all images load
+     - Test sound toggle button
+     - Verify form submission
+     - Check mobile responsiveness
+
+  6. DEPLOY (if using a web server):
+     - Upload all files to your web server
+     - Ensure .htaccess is uploaded (if used)
+     - Submit sitemap.xml to Google Search Console
+*/
