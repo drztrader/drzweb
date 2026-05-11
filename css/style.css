@@ -79,18 +79,18 @@ body{
 /* ========================= */
 
 .cursor{
-    width:18px;
-    height:18px;
+    width:12px;
+    height:12px;
     border-radius:50%;
     position:fixed;
-    background:white;
+    background:rgba(255,255,255,0.8);
     pointer-events:none;
     z-index:999999;
     mix-blend-mode:normal;
     transform:translate(-50%,-50%);
-    box-shadow:0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.25);
+    box-shadow:0 0 10px rgba(255,255,255,0.25), 0 0 18px rgba(255,255,255,0.16);
     opacity:0;
-    transition:0.1s;
+    transition:0.1s ease;
 }
 
 .cursor.active{
@@ -526,11 +526,6 @@ h1{
     font-size: 14px;
 }
 
-/* Contact form / mobile email visibility */
-.contact-form {
-    display: block;
-}
-
 .email-copy-mobile {
     display: none;
 }
@@ -551,39 +546,6 @@ h1{
 .copy-email:hover {
     background: rgba(255,255,255,0.10);
     box-shadow: 0 0 15px rgba(255,255,255,0.10);
-}
-
-/* ========================= */
-/* Sound Toggle */
-/* ========================= */
-
-.sound-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 1000;
-    transition: 0.3s;
-    color: white;
-    font-size: 20px;
-}
-
-.sound-toggle:hover {
-    background: rgba(255,255,255,0.15);
-    box-shadow: 0 0 20px rgba(255,255,255,0.15);
-}
-
-.sound-toggle:focus {
-    outline: 2px solid rgba(255,255,255,0.4);
-    outline-offset: 2px;
 }
 
 /* ========================= */
@@ -624,13 +586,6 @@ h1{
         margin: 20px 10px;
     }
 
-    .sound-toggle {
-        bottom: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
-    }
 }
 
 @media(max-width:480px){

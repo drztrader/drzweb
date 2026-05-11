@@ -37,48 +37,6 @@ if (cursor) {
 }
 
 /* ========================= */
-/* Hover Sound with Toggle */
-/* ========================= */
-
-const hoverSound = document.getElementById('hoverSound');
-let soundEnabled = localStorage.getItem('soundEnabled') !== 'false';
-
-const updateSoundToggle = () => {
-    const toggle = document.querySelector('.sound-toggle');
-    if (toggle) {
-        toggle.innerHTML = soundEnabled ? '<i class="fas fa-volume-up"></i>' : '<i class="fas fa-volume-mute"></i>';
-    }
-};
-
-const initSoundToggle = () => {
-    const toggle = document.querySelector('.sound-toggle');
-    if (toggle) {
-        updateSoundToggle();
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            soundEnabled = !soundEnabled;
-            localStorage.setItem('soundEnabled', soundEnabled);
-            updateSoundToggle();
-        });
-    }
-};
-
-const playHoverSound = () => {
-    if (soundEnabled && hoverSound) {
-        hoverSound.currentTime = 0;
-        hoverSound.play().catch(e => console.log('Audio play failed:', e));
-    }
-};
-
-// Add sound effect to buttons
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', playHoverSound);
-});
-
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', initSoundToggle);
-
-/* ========================= */
 /* Form Handling */
 /* ========================= */
 
@@ -112,6 +70,14 @@ const initContactForm = () => {
 const initCopyEmail = () => {
     const copyButton = document.querySelector('.copy-email');
     if (copyButton) {
+        copyButton.addEventListener('mouseover', () => {
+            if (cursor) cursor.style.opacity = '0';
+        });
+
+        copyButton.addEventListener('mouseout', () => {
+            if (cursor) cursor.style.opacity = '1';
+        });
+
         copyButton.addEventListener('click', async (e) => {
             e.preventDefault();
             try {
