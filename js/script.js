@@ -20,7 +20,14 @@ window.addEventListener('load', () => {
 
 const cursor = document.getElementById('cursor');
 
-if (cursor) {
+// Detect if device supports touch
+const isTouchDevice = () => {
+    return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+};
+
+if (cursor && !isTouchDevice()) {
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
